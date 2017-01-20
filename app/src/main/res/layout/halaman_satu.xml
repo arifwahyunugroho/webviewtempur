@@ -1,7 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@android:color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -13,13 +12,13 @@
         android:paddingBottom="10dp">
 
 
-        <TextView
-            android:id="@+id/textView"
+        <com.startapp.android.publish.ads.banner.Banner
+            android:id="@+id/startAppBanner"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="startapp banner ads"
-            tools:text="Untuk Ads Banner" />
+            android:layout_centerHorizontal="true"
+            />
 
         <ScrollView
             android:layout_width="match_parent"
@@ -34,16 +33,6 @@
                 android:orientation="vertical">
 
 
-
-                <!--<com.google.android.gms.ads.NativeExpressAdView-->
-                    <!--android:id="@+id/nativeadView"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_gravity="center"-->
-                    <!--ads:adSize="400x400"-->
-                    <!--ads:adUnitId="@string/native_ad_unit_id">-->
-                <!--</com.google.android.gms.ads.NativeExpressAdView>-->
-
                 <TextView
                     android:id="@+id/textView"
                     android:layout_width="wrap_content"
@@ -51,23 +40,18 @@
                     android:layout_gravity="center"
                     android:text="Native Ads Atas"/>
 
-            <Button
-                android:id="@+id/btnartikel01"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="ARTIKEL 1" />
+                <Button
+                    android:id="@+id/btnhome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="KEMBALI KE HOME" />
 
-            <Button
-                android:id="@+id/button2"
+                <WebView
+                android:id="@+id/activity_main_webview"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="ARTIKEL 2" />
-
-            <Button
-                android:id="@+id/button3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="ARTIKEL 3" />
+                android:layout_height="0dp"
+                android:layout_weight="1">
+                </WebView>
 
                 <TextView
                     android:id="@+id/textView"
@@ -78,13 +62,7 @@
 
 
 
-            <!--<WebView-->
-            <!--android:id="@+id/activity_main_webview"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="0dp"-->
-            <!--android:layout_weight="1">-->
 
-            <!--</WebView>-->
 
             </LinearLayout>
 
