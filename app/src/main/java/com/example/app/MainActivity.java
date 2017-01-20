@@ -1,50 +1,80 @@
 package com.example.app;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
+import android.view.View;
+import android.widget.Button;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.formats.NativeAd;
+
+import android.view.Window;
+
 
 
 public class MainActivity extends Activity {
 
-    private WebView mWebView;
+//    private WebView mWebView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
-        mWebView = (WebView) findViewById(R.id.activity_main_webview);
+//        mWebView = (WebView) findViewById(R.id.activity_main_webview);
 
         // Force links and redirects to open in the WebView instead of in a browser
-        mWebView.setWebViewClient(new WebViewClient());
+//        mWebView.setWebViewClient(new WebViewClient());
 
         // Enable Javascript
-        WebSettings webSettings = mWebView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
+//        WebSettings webSettings = mWebView.getSettings();
+//        webSettings.setJavaScriptEnabled(true);
 
         // Use remote resource
-        // mWebView.loadUrl("http://example.com");
+//         mWebView.loadUrl("http://mock.robotemplates.com/webviewapp/home.html");
 
-        // Stop local links and redirects from opening in browser instead of WebView
-        // mWebView.setWebViewClient(new MyAppWebViewClient());
+//         Stop local links and redirects from opening in browser instead of WebView
+//         mWebView.setWebViewClient(new MyAppWebViewClient());
 
-        // Use local resource
-        // mWebView.loadUrl("file:///android_asset/www/index.html");
+//         Use local resource
+//         mWebView.loadUrl("file:///android_asset/www/index.html");
+
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+
+        // tombol menuju artikel pertama halaman_satu
+        final Button go = (Button)findViewById(R.id.btnartikel01);
+        go.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Intent i = new Intent(MainActivity.this, SatuHalaman.class);
+                startActivity(i);
+            }
+        });
+
+//        NativeAd nativeAdview = (NativeAd)findViewById(R.id.nativeadView);
+//        nativeAdview.loadAd(new AdRequest.Builder().build());
+//
+
+
     }
 
     // Prevent the back-button from closing the app
     @Override
     public void onBackPressed() {
-        if(mWebView.canGoBack()) {
-            mWebView.goBack();
-        } else {
-            super.onBackPressed();
-        }
+//        if(mWebView.canGoBack()) {
+//            mWebView.goBack();
+//        } else {
+//            super.onBackPressed();
+//        }
     }
 
     @Override
