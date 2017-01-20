@@ -11,14 +11,16 @@ import android.widget.Button;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.formats.NativeAd;
+import com.startapp.android.publish.adsCommon.StartAppAd;
+import com.startapp.android.publish.adsCommon.StartAppSDK;
 
 import android.view.Window;
 
 
-
 public class MainActivity extends Activity {
 
-//    private WebView mWebView;
+    //    private WebView mWebView;
+    private Button btn;
 
 
     @Override
@@ -51,7 +53,7 @@ public class MainActivity extends Activity {
 
 
         // tombol menuju artikel pertama halaman_satu
-        final Button go = (Button)findViewById(R.id.btnartikel01);
+        final Button go = (Button) findViewById(R.id.btnartikel01);
         go.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
@@ -65,37 +67,60 @@ public class MainActivity extends Activity {
 //
 
 
-    }
+        //startups
+//        StartAppSDK.init(this, "206836067", true);
+        StartAppSDK.init(this, ".getString(R.string.startapp_id)", true);
+        btn = ((Button) findViewById(R.id.btnartikel01));
+//        Intent second;
+        btn.setOnClickListener(new View.OnClickListener() {
+                                   public void onClick(View v) {
+                                       Intent second = new Intent(MainActivity.this, SatuHalaman.class);
+                                       startActivity(second);
+                                       StartAppAd.showAd(MainActivity.this);
+                                   }}
+                                   );
 
-    // Prevent the back-button from closing the app
-    @Override
-    public void onBackPressed() {
+
+                               }
+
+                // Prevent the back-button from closing the app
+        @Override
+        public void onBackPressed () {
 //        if(mWebView.canGoBack()) {
 //            mWebView.goBack();
 //        } else {
 //            super.onBackPressed();
 //        }
-    }
+        }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        @Override
+        public boolean onCreateOptionsMenu (Menu menu){
+            // Inflate the menu; this adds items to the action bar if it is present.
+            getMenuInflater().inflate(R.menu.menu_main, menu);
             return true;
         }
 
-        return super.onOptionsItemSelected(item);
+        @Override
+        public boolean onOptionsItemSelected (MenuItem item){
+            // Handle action bar item clicks here. The action bar will
+            // automatically handle clicks on the Home/Up button, so long
+            // as you specify a parent activity in AndroidManifest.xml.
+            int id = item.getItemId();
+
+            //noinspection SimplifiableIfStatement
+            if (id == R.id.action_settings) {
+                return true;
+            }
+
+            return super.onOptionsItemSelected(item);
+        }
+
+
+//        public void btnOpenActivity (View view){
+//            Intent nextActivity = new Intent(this, SatuHalaman.class);
+//            startActivity(nextActivity);
+//            StartAppAd.showAd(this);
+//        }
+
+
     }
-}
